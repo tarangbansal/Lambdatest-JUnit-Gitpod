@@ -37,10 +37,6 @@ public class SingleTest {
 		capability.setCapability("build", "Junit Single Test");
 		capability.setCapability("name", "JUnit Single");
 		capability.setCapability("screen_resolution", res);
-		capability.setCapability("network", true);
-		capability.setCapability("video", true);
-		capability.setCapability("console", true);
-		capability.setCapability("visual", "true");
 
 		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 

@@ -25,9 +25,9 @@ public class TestBase {
 	@Parameterized.Parameters
 	public static LinkedList<String[]> getEnvironments() throws Exception {
 		LinkedList<String[]> env = new LinkedList<String[]>();
-		env.add(new String[] { "WIN10", "chrome", "64.0" });
-		env.add(new String[] { "WIN10", "firefox", "60.0" });
-		env.add(new String[] { "WIN7", "internet explorer", "10.0" });
+		env.add(new String[] { "Windows 10", "chrome", "latest" });
+		env.add(new String[] { "Windows 10", "firefox", "latest" });
+		env.add(new String[] { "Windows 7", "internet explorer", "latest" });
 
 		// add more browsers here
 
@@ -49,10 +49,6 @@ public class TestBase {
 		capability.setCapability(CapabilityType.PLATFORM, this.platform);
 		capability.setCapability("build", "Junit Parallel Tests");
 		capability.setCapability("name", "JUnit Parallel");
-		capability.setCapability("network", true);
-		capability.setCapability("video", true);
-		capability.setCapability("console", true);
-		capability.setCapability("visual", true);
 
 		// Set you LAMBDATEST Username here if not Provided from Jenkins
 		String username = Configuration.readConfig("LambdaTest_UserName");
