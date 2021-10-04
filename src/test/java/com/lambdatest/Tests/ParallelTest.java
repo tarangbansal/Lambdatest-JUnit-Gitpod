@@ -2,6 +2,7 @@ package com.lambdatest.Tests;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -12,14 +13,15 @@ import java.util.LinkedList;
 
 import org.junit.runners.Parameterized;
 
-@Ignore
+
 @RunWith(Parallelized.class)
-public class TestBase {
+public class ParallelTest {
 
 	public String platform;
 	public String browserName;
 	public String browserVersion;
 	public static WebDriver driver;
+	public static String status = "failed";
 
 
 	@Parameterized.Parameters
@@ -34,7 +36,7 @@ public class TestBase {
 		return env;
 	}
 
-	public TestBase(String platform, String browserName, String browserVersion) {
+	public ParallelTest(String platform, String browserName, String browserVersion) {
 
 		this.platform = platform;
 		this.browserName = browserName;
@@ -59,6 +61,14 @@ public class TestBase {
 		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 
 		driver = new RemoteWebDriver(new URL(gridURL), capability);
+	}
+
+	@Test
+	public void test() throws InterruptedException {
+		// Launch the app
+		driver.get("https://lambdatest.github.io/sample-todo-app/");
+		Thread.sleep(3000);
+		status = "passed";
 	}
 
 	@After
